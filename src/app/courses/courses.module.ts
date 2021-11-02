@@ -6,6 +6,7 @@ import { SharedModule } from './../shared/shared.module';
 import { CoursesRoutingModule } from './courses-routing.module';
 import { CoursesComponent } from './courses/courses.component';
 
+
 @NgModule({
   declarations: [
     CoursesComponent
