@@ -1,10 +1,10 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
-import { Course } from '../model/course';
 
+import { Course } from '../model/course';
 import { CoursesService } from '../services/courses.service';
 
 @Component({
@@ -25,10 +25,7 @@ export class CourseFormComponent implements OnInit {
     private snackBar: MatSnackBar,
     private location: Location,
     private route: ActivatedRoute) {
-    this.form = this.formBuilder.group({
-      name: [null],
-      category: [null]
-    });
+    //this.form
   }
 
   ngOnInit(): void {
@@ -41,6 +38,7 @@ export class CourseFormComponent implements OnInit {
   }
 
   onSubmit(){
+    console.log(this.form.value);
     this.service.save(this.form.value)
       .subscribe(result => this.onSuccess(), error => this.onError());
   }
