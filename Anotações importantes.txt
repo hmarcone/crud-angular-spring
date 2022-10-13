@@ -2,3 +2,7 @@ Para executar o projeto crud-angular
 
 > Precisar instalar o npm install -g @angular/cli se o ng serve dê erro
 > npm run start - para pegar o proxy
+
+Para rodar o crud-spring
+
+λ mvn spring-boot:run
