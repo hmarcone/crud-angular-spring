@@ -1,6 +1,6 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { UntypedFormBuilder } from '@angular/forms';
+import { NonNullableFormBuilder } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
 
@@ -12,6 +12,7 @@ import { CoursesService } from '../services/courses.service';
   templateUrl: './course-form.component.html',
   styleUrls: ['./course-form.component.scss']
 })
+
 export class CourseFormComponent implements OnInit {
 
   form = this.formBuilder.group({
@@ -20,7 +21,7 @@ export class CourseFormComponent implements OnInit {
     category: ['']
   });
 
-  constructor(private formBuilder: UntypedFormBuilder,
+  constructor(private formBuilder: NonNullableFormBuilder,
     private service: CoursesService,
     private snackBar: MatSnackBar,
     private location: Location,
