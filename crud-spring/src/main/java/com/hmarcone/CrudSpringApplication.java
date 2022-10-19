@@ -14,7 +14,7 @@ public class CrudSpringApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(CrudSpringApplication.class, args);
 	}
-
+	
 	@Bean
 	CommandLineRunner initDatabase(CourseRepository courseRepository) {
 		return args -> {
