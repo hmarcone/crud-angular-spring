@@ -22,11 +22,11 @@ public class CrudSpringApplication {
 
 			Course c = new Course();
 			c.setName("Angular com Spring");
-			c.setCategory("front-end");
+			c.setCategory("Front-end");
 
 			Course c1 = new Course();
 			c1.setName("Flutter com Dart");
-			c1.setCategory("front-end");
+			c1.setCategory("Front-end");
 			
 			courseRepository.save(c);
 			courseRepository.save(c1);
