@@ -13,10 +13,9 @@ import { CoursesService } from '../../services/courses.service';
 @Component({
   selector: 'app-courses',
   templateUrl: './courses.component.html',
-  styleUrls: ['./courses.component.scss']
+  styleUrls: ['./courses.component.scss'],
 })
 export class CoursesComponent implements OnInit {
-
   courses$: Observable<Course[]> | null = null;
 
   constructor(
@@ -30,22 +29,22 @@ export class CoursesComponent implements OnInit {
   }
 
   refresh() {
-    this.courses$ = this.coursesService.list()
-      .pipe(
-        catchError(error => {
-          this.onError('Erro ao carregar cursos.');
-          return of([])
-        })
-      );
+    this.courses$ = this.coursesService.list().pipe(
+      catchError((error) => {
+        console.log('error: ' + error);
+        this.onError('Erro ao carregar cursos.');
+        return of([]);
+      })
+    );
   }
 
   onError(errorMsg: string) {
     this.dialog.open(ErrorDialogComponent, {
-      data: errorMsg
+      data: errorMsg,
     });
   }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {}
 
   onAdd() {
     this.router.navigate(['new'], { relativeTo: this.route });
@@ -57,22 +56,19 @@ export class CoursesComponent implements OnInit {
   }
 
   onRemove(course: Course) {
-
     const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
       data: 'Tem certeza que deseja remover esse curso?',
     });
 
     dialogRef.afterClosed().subscribe((result: boolean) => {
-
       if (result) {
-
         this.coursesService.remove(course._id).subscribe(
           () => {
             this.refresh();
             this.snackBar.open('Curso removido com sucesso!', 'X', {
               duration: 5000,
               verticalPosition: 'top',
-              horizontalPosition: 'center'
+              horizontalPosition: 'center',
             });
           },
           () => this.onError('Erro ao tentar remover curso.')
