@@ -18,9 +18,9 @@ import lombok.Data;
 
 @Data
 @Entity
-//@Table(name = "cursos")
+// @Table(name = "cursos")
 public class Course {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @JsonProperty("_id")
@@ -33,7 +33,7 @@ public class Course {
     private String name;
 
     @NotNull
-    @Length(max = 100)
+    @Length(max = 10)
     @Pattern(regexp = "Back-end|Front-end")
     @Column(length = 10, nullable = false)
     private String category;
