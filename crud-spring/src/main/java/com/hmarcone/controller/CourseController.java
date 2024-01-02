@@ -2,9 +2,9 @@ package com.hmarcone.controller;
 
 import java.util.List;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Positive;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 
 import com.hmarcone.model.Course;
 import com.hmarcone.repository.CourseRepository;
@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
@@ -33,7 +32,7 @@ public class CourseController {
 
     private final CourseRepository courseRepository;
 
-    //@RequestMapping(method = RequestMethod.GET)
+    // @RequestMapping(method = RequestMethod.GET)
     @GetMapping
     public @ResponseBody List<Course> list() {
         return courseRepository.findAll();
@@ -45,7 +44,7 @@ public class CourseController {
                 .map(recordFound -> ResponseEntity.ok().body(recordFound))
                 .orElse(ResponseEntity.notFound().build());
     }
-        
+
     @PostMapping
     @ResponseStatus(code = HttpStatus.CREATED)
     public Course create(@RequestBody @Valid Course course) {
@@ -53,7 +52,7 @@ public class CourseController {
         return courseRepository.save(course);
         // return ResponseEntity.status(HttpStatus.CREATED)
         // .body(courseRepository.save(course));
-    }    
+    }
 
     @PutMapping("/{id}")
     public ResponseEntity<Course> update(@PathVariable Long id, @RequestBody @Valid Course course) {
@@ -65,7 +64,7 @@ public class CourseController {
                     return ResponseEntity.ok().body(updated);
                 })
                 .orElse(ResponseEntity.notFound().build());
-    }    
+    }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable @NotNull @Positive Long id) {
@@ -75,5 +74,5 @@ public class CourseController {
                     return ResponseEntity.noContent().<Void>build();
                 })
                 .orElse(ResponseEntity.notFound().build());
-    }    
+    }
 }
