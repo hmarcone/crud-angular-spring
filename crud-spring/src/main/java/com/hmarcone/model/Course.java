@@ -1,7 +1,10 @@
 package com.hmarcone.model;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.Convert;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -14,6 +17,9 @@ import org.hibernate.annotations.Where;
 import org.hibernate.validator.constraints.Length;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.hmarcone.enums.Category;
+import com.hmarcone.enums.converters.CategoryConverter;
+
 import lombok.Data;
 
 @Data
@@ -35,36 +41,13 @@ public class Course {
     private String name;
 
     @NotNull
-    @Length(max = 10)
-    @Pattern(regexp = "Back-end|Front-end")
     @Column(length = 10, nullable = false)
-    private String category;
-
-    // @NotNull
-    // @Column(length = 10, nullable = false)
-    // @Convert(converter = StatusConverter.class)
-    // private Status status = Status.ACTIVE;
+    @Convert(converter = CategoryConverter.class)
+    private Category category;
 
     @NotNull
     @Length(max = 10)
     @Pattern(regexp = "Ativo|Inativo")
     @Column(length = 10, nullable = false)
     private String status = "Ativo";
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String categoria) {
-        this.category = categoria;
-    }
-
 }

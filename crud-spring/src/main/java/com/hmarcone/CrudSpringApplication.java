@@ -1,5 +1,6 @@
 package com.hmarcone;
 
+import com.hmarcone.enums.Category;
 import com.hmarcone.model.Course;
 import com.hmarcone.repository.CourseRepository;
 
@@ -14,7 +15,7 @@ public class CrudSpringApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(CrudSpringApplication.class, args);
 	}
-	
+
 	@Bean
 	CommandLineRunner initDatabase(CourseRepository courseRepository) {
 		return args -> {
@@ -22,12 +23,12 @@ public class CrudSpringApplication {
 
 			Course c = new Course();
 			c.setName("Angular com Spring");
-			c.setCategory("Front-end");
+			c.setCategory(Category.FRONT_END);
 
 			Course c1 = new Course();
 			c1.setName("Flutter com Dart");
-			c1.setCategory("Front-end");
-			
+			c1.setCategory(Category.FRONT_END);
+
 			courseRepository.save(c);
 			courseRepository.save(c1);
 		};

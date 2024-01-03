@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import com.hmarcone.dto.CourseDTO;
 import com.hmarcone.dto.mapper.CourseMapper;
+import com.hmarcone.enums.Category;
 import com.hmarcone.exception.RecordNotFoundException;
 import com.hmarcone.repository.CourseRepository;
 
@@ -48,7 +49,7 @@ public class CourseService {
         return courseRepository.findById(id)
                 .map(recordFound -> {
                     recordFound.setName(course.name());
-                    recordFound.setCategory(course.category());
+                    recordFound.setCategory(Category.FRONT_END);
                     return courseMapper.toDTO(courseRepository.save(recordFound));
                 }).orElseThrow(() -> new RecordNotFoundException(id));
     }
