@@ -27,7 +27,6 @@ public class CourseMapper {
             course.setId(courseDTO.id());
         }
         course.setName(courseDTO.name());
-        // TODO: use a mapper for Category
         course.setCategory(convertCategoryValue(courseDTO.category()));
         return course;
     }
