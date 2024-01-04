@@ -2,6 +2,7 @@ package com.hmarcone;
 
 import com.hmarcone.enums.Category;
 import com.hmarcone.model.Course;
+import com.hmarcone.model.Lesson;
 import com.hmarcone.repository.CourseRepository;
 
 import org.springframework.boot.CommandLineRunner;
@@ -28,6 +29,18 @@ public class CrudSpringApplication {
 			Course c1 = new Course();
 			c1.setName("Flutter com Dart");
 			c1.setCategory(Category.FRONT_END);
+
+			Lesson l = new Lesson();
+			l.setName("Introdução");
+			l.setYoutubeUrl("watch?v=1");
+			l.setCourse(c);
+			c.getLessons().add(l);
+
+			Lesson l1 = new Lesson();
+			l1.setName("Introdução");
+			l1.setYoutubeUrl("watch?v=1");
+			l1.setCourse(c1);
+			c1.getLessons().add(l1);
 
 			courseRepository.save(c);
 			courseRepository.save(c1);
