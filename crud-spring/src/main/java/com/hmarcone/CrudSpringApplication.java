@@ -22,34 +22,36 @@ public class CrudSpringApplication {
 		return args -> {
 			courseRepository.deleteAll();
 
-			Course c = new Course();
-			c.setName("Angular com Spring");
-			c.setCategory(Category.FRONT_END);
+			for (int i = 0; i < 20; i++) {
+				Course c = new Course();
+				c.setName("Angular com Spring" + i);
+				c.setCategory(Category.FRONT_END);
 
-			Course c1 = new Course();
-			c1.setName("Flutter com Dart");
-			c1.setCategory(Category.FRONT_END);
+				Course c1 = new Course();
+				c1.setName("Flutter com Dart");
+				c1.setCategory(Category.FRONT_END);
 
-			Lesson l = new Lesson();
-			l.setName("Introdução");
-			l.setYoutubeUrl("01234567890");
-			l.setCourse(c);
-			c.getLessons().add(l);
+				Lesson l = new Lesson();
+				l.setName("Introdução");
+				l.setYoutubeUrl("01234567890");
+				l.setCourse(c);
+				c.getLessons().add(l);
 
-			Lesson l1 = new Lesson();
-			l1.setName("Introdução");
-			l1.setYoutubeUrl("01234567891");
-			l1.setCourse(c1);
-			c1.getLessons().add(l1);
+				Lesson l1 = new Lesson();
+				l1.setName("Introdução");
+				l1.setYoutubeUrl("01234567891");
+				l1.setCourse(c1);
+				c1.getLessons().add(l1);
 
-			Lesson l2 = new Lesson();
-			l2.setName("Angular");
-			l2.setYoutubeUrl("01234567891");
-			l2.setCourse(c);
-			c.getLessons().add(l2);
+				Lesson l2 = new Lesson();
+				l2.setName("Angular");
+				l2.setYoutubeUrl("01234567891");
+				l2.setCourse(c);
+				c.getLessons().add(l2);
 
-			courseRepository.save(c);
-			courseRepository.save(c1);
+				courseRepository.save(c);
+				courseRepository.save(c1);
+			}
 		};
 	}
 }
