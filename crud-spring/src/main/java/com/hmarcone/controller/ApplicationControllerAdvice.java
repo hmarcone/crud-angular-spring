@@ -36,6 +36,7 @@ public class ApplicationControllerAdvice {
                 .reduce("", (acc, error) -> acc + error + "\n");
     }
 
+    @SuppressWarnings("null")
     @ExceptionHandler(MethodArgumentTypeMismatchException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public String handleMethodArgumentTypeMismatchException(MethodArgumentTypeMismatchException ex) {
