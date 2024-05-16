@@ -11,8 +11,8 @@ describe('ErrorDialogComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ErrorDialogComponent ]
-    })
+    imports: [ErrorDialogComponent]
+})
     .compileComponents();
   }));
 
