@@ -13,7 +13,7 @@ import { CoursePage } from '../../model/course-page';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatProgressSpinner } from '@angular/material/progress-spinner';
 import { CoursesListComponent } from '../../components/courses-list/courses-list.component';
-import { NgIf, AsyncPipe } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import { MatToolbar } from '@angular/material/toolbar';
 import { MatCard } from '@angular/material/card';
 
@@ -25,12 +25,11 @@ import { MatCard } from '@angular/material/card';
   imports: [
     MatCard,
     MatToolbar,
-    NgIf,
     CoursesListComponent,
     MatPaginator,
     MatProgressSpinner,
-    AsyncPipe,
-  ],
+    AsyncPipe
+],
 })
 export class CoursesComponent implements OnInit {
   courses$: Observable<CoursePage> | null = null;

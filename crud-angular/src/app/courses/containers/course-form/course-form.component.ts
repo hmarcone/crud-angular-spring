@@ -1,4 +1,4 @@
-import { Location, NgIf, NgFor } from '@angular/common';
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import {
   FormGroup,
@@ -46,18 +46,16 @@ import {
     MatFormField,
     MatInput,
     MatHint,
-    NgIf,
     MatError,
     MatLabel,
     MatSelect,
     MatOption,
     MatIconButton,
     MatIcon,
-    NgFor,
     MatPrefix,
     MatCardActions,
-    MatButton,
-  ],
+    MatButton
+],
 })
 export class CourseFormComponent implements OnInit {
   form!: FormGroup;
