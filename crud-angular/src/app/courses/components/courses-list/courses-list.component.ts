@@ -1,24 +1,29 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Course } from '../../model/course';
+import { CategoryPipe } from '../../../shared/pipes/category.pipe';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTableModule } from '@angular/material/table';
 
 @Component({
   selector: 'app-courses-list',
   templateUrl: './courses-list.component.html',
-  styleUrls: ['./courses-list.component.scss']
+  styleUrls: ['./courses-list.component.scss'],
+  standalone: true,
+  imports: [MatTableModule, MatIconModule, MatButtonModule, CategoryPipe],
 })
-export class CoursesListComponent implements OnInit {
 
+export class CoursesListComponent implements OnInit {
   @Input() courses: Course[] = [];
   @Output() add = new EventEmitter(false);
   @Output() edit = new EventEmitter(false);
   @Output() remove = new EventEmitter(false);
 
-  readonly displayedColumns = ['name','category', 'actions'];
+  readonly displayedColumns = ['name', 'category', 'actions'];
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   onAdd() {
     this.add.emit(true);
@@ -31,5 +36,4 @@ export class CoursesListComponent implements OnInit {
   onDelete(course: Course) {
     this.remove.emit(course);
   }
-
 }

@@ -9,19 +9,16 @@ import { CoursesRoutingModule } from './courses-routing.module';
 import { CoursesComponent } from './containers/courses/courses.component';
 import { CoursesListComponent } from './components/courses-list/courses-list.component';
 
-
 @NgModule({
-  declarations: [
-    CoursesComponent,
-    CourseFormComponent,
-    CoursesListComponent
-  ],
   imports: [
     CommonModule,
     CoursesRoutingModule,
     AppMaterialModule,
     SharedModule,
-    ReactiveFormsModule
-  ]
+    ReactiveFormsModule,
+    CoursesComponent,
+    CourseFormComponent,
+    CoursesListComponent,
+  ],
 })
-export class CoursesModule { }
+export class CoursesModule {}
